@@ -9,8 +9,10 @@ ImageSplitter is available for Windows and Linux/MacOS by using [Wine](https://w
 * Run `ImageSplitter.Winforms.exe`
 
     * Windows:
+
     ![](start.jpg)
-    * Linux/MacOS: Open your console in the `WinformsApp` and run `wine ImageSplitter.Winforms.exe` or `mono ImageSplitter.Winforms.exe`
+    * Linux/MacOS: Open your console in the `WinformsApp` folder and run `wine ImageSplitter.Winforms.exe` or `mono ImageSplitter.Winforms.exe`
+    
     ![](startunix.jpg)
 
 * Generate your images
