@@ -18,8 +18,9 @@ ImageSplitter is available for Windows and Linux/MacOS by using [Wine](https://w
 * Generate your images
     ![](generate.jpg)
     * Enter the path for the image and output loaction
-    * Set the square size and adjust it
-    * Generate preview or generate your images
+    * Set the square size and the prefix or surfix
+    * Generate preview to preview how the emotes will look
+    * Generate your emotes, optionally you can disable downscaling (128px is the max emote size on Discord)
 
 * Add the emotes to your Discord server, you can use `emotes.txt` to paste them quickly into chat
 
