@@ -49,7 +49,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dimensions = new System.Windows.Forms.Label();
             this.animated = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.total = new System.Windows.Forms.Label();
             this.genprev = new System.Windows.Forms.Button();
             this.prefix = new System.Windows.Forms.TextBox();
@@ -108,7 +107,7 @@
             this.gen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.gen.Enabled = false;
             this.gen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gen.Location = new System.Drawing.Point(490, 362);
+            this.gen.Location = new System.Drawing.Point(490, 349);
             this.gen.Name = "gen";
             this.gen.Size = new System.Drawing.Size(281, 99);
             this.gen.TabIndex = 6;
@@ -176,9 +175,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(485, 127);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(153, 26);
+            this.label4.Size = new System.Drawing.Size(161, 26);
             this.label4.TabIndex = 15;
-            this.label4.Text = "Emoji Settings";
+            this.label4.Text = "Emote Settings";
             // 
             // label6
             // 
@@ -255,21 +254,11 @@
             this.animated.TabIndex = 23;
             this.animated.Text = "Is Animated:";
             // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(489, 464);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(209, 13);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "Note: emotes will be downscaled to 128px²";
-            // 
             // total
             // 
             this.total.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.total.AutoSize = true;
-            this.total.Location = new System.Drawing.Point(559, 231);
+            this.total.Location = new System.Drawing.Point(560, 231);
             this.total.Name = "total";
             this.total.Size = new System.Drawing.Size(37, 13);
             this.total.TabIndex = 25;
@@ -279,7 +268,7 @@
             // 
             this.genprev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.genprev.Enabled = false;
-            this.genprev.Location = new System.Drawing.Point(490, 333);
+            this.genprev.Location = new System.Drawing.Point(490, 320);
             this.genprev.Name = "genprev";
             this.genprev.Size = new System.Drawing.Size(281, 23);
             this.genprev.TabIndex = 26;
@@ -364,7 +353,6 @@
             this.Controls.Add(this.prefix);
             this.Controls.Add(this.genprev);
             this.Controls.Add(this.total);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.animated);
             this.Controls.Add(this.dimensions);
             this.Controls.Add(this.label8);
@@ -414,7 +402,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label dimensions;
         private System.Windows.Forms.Label animated;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label total;
         private System.Windows.Forms.Button genprev;
         private System.Windows.Forms.TextBox prefix;
