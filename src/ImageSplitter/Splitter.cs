@@ -9,10 +9,12 @@ namespace ImageSplitter
 {
     public class Splitter
     {
-        public static void Split(Image src, int size, string OutputLocation)
+        public static void Split(Image src, int size, string OutputLocation, string prefix, string surfix, bool downscale = true)
         {
             Image tile = new Bitmap(size, size);
+
             Size emotesize = new Size(128, 128);
+            if (!downscale) emotesize = new Size(size, size);
 
             int columns = (int)Math.Ceiling((decimal)src.Width / tile.Width);
             int rows = (int)Math.Ceiling((decimal)src.Height / tile.Height);
@@ -31,8 +33,8 @@ namespace ImageSplitter
             string emotetext = "";
             for (int i = 0; i < columns * rows; i++)
             {
-                new Bitmap(image.Clone(new Rectangle(column * tile.Width, row * tile.Height, tile.Width, tile.Height), image.PixelFormat), emotesize).Save(OutputLocation + "/" + i.ToString("D2") + ".jpg");
-                emotetext += ":" + i.ToString("D2").Replace("100", "100~1").Replace("1234", "1234~1") + ":";
+                new Bitmap(image.Clone(new Rectangle(column * tile.Width, row * tile.Height, tile.Width, tile.Height), image.PixelFormat), emotesize).Save(OutputLocation + "/" + prefix + i.ToString("D2").Replace("100", "100~1").Replace("1234", "1234~1") + surfix + ".jpg");
+                emotetext += ":" + prefix + i.ToString("D2").Replace("100", "100~1").Replace("1234", "1234~1") + surfix + ":";
                 if (column == columns - 1)
                 {
                     column = 0;

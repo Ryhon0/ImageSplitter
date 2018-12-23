@@ -68,7 +68,7 @@ namespace SplitterGUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ImageSplitter.Splitter.Split(src, int.Parse(ssize.Text), path.Text);
+            ImageSplitter.Splitter.Split(src, int.Parse(ssize.Text), path.Text, prefix.Text, surfix.Text);
         }
 
         private void ssize_TextChanged(object sender, EventArgs e)
@@ -94,6 +94,11 @@ namespace SplitterGUI
         private void button4_Click(object sender, EventArgs e)
         {
             preview.Image = ImageSplitter.Splitter.GeneratePreview(src, int.Parse(ssize.Text), int.Parse(columns.Text), int.Parse(rows.Text));
+        }
+
+        private void prefix_surfix_TextChanged(object sender, EventArgs e)
+        {
+            emotename.Text = "Example emote name: " + prefix.Text + "XX" + surfix.Text;
         }
     }
 }

@@ -52,6 +52,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.total = new System.Windows.Forms.Label();
             this.genprev = new System.Windows.Forms.Button();
+            this.prefix = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.surfix = new System.Windows.Forms.TextBox();
+            this.emotename = new System.Windows.Forms.Label();
+            this.downscale = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.preview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -281,6 +287,66 @@
             this.genprev.UseVisualStyleBackColor = true;
             this.genprev.Click += new System.EventHandler(this.button4_Click);
             // 
+            // prefix
+            // 
+            this.prefix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.prefix.Location = new System.Drawing.Point(562, 247);
+            this.prefix.Name = "prefix";
+            this.prefix.Size = new System.Drawing.Size(100, 20);
+            this.prefix.TabIndex = 27;
+            this.prefix.TextChanged += new System.EventHandler(this.prefix_surfix_TextChanged);
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(523, 250);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(33, 13);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "Prefix";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(523, 276);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(33, 13);
+            this.label10.TabIndex = 30;
+            this.label10.Text = "Surfix";
+            // 
+            // surfix
+            // 
+            this.surfix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.surfix.Location = new System.Drawing.Point(562, 273);
+            this.surfix.Name = "surfix";
+            this.surfix.Size = new System.Drawing.Size(100, 20);
+            this.surfix.TabIndex = 29;
+            this.surfix.TextChanged += new System.EventHandler(this.prefix_surfix_TextChanged);
+            // 
+            // emotename
+            // 
+            this.emotename.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.emotename.AutoSize = true;
+            this.emotename.Location = new System.Drawing.Point(487, 296);
+            this.emotename.Name = "emotename";
+            this.emotename.Size = new System.Drawing.Size(128, 13);
+            this.emotename.TabIndex = 31;
+            this.emotename.Text = "Example emote name: XX";
+            // 
+            // downscale
+            // 
+            this.downscale.AutoSize = true;
+            this.downscale.Checked = true;
+            this.downscale.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.downscale.Location = new System.Drawing.Point(490, 454);
+            this.downscale.Name = "downscale";
+            this.downscale.Size = new System.Drawing.Size(159, 17);
+            this.downscale.TabIndex = 32;
+            this.downscale.Text = "Downscale images to 128px";
+            this.downscale.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,6 +356,12 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(781, 483);
+            this.Controls.Add(this.downscale);
+            this.Controls.Add(this.emotename);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.surfix);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.prefix);
             this.Controls.Add(this.genprev);
             this.Controls.Add(this.total);
             this.Controls.Add(this.label5);
@@ -345,5 +417,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label total;
         private System.Windows.Forms.Button genprev;
+        private System.Windows.Forms.TextBox prefix;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox surfix;
+        private System.Windows.Forms.Label emotename;
+        private System.Windows.Forms.CheckBox downscale;
     }
 }
