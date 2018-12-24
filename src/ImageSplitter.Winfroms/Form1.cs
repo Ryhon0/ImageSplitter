@@ -110,5 +110,10 @@ namespace SplitterGUI
             delay.Enabled = gif.Checked;
         }
 
+        private void savprev_Click(object sender, EventArgs e)
+        {
+            if ((src.GetFrameCount(new FrameDimension(src.FrameDimensionsList[0])) > 1)) preview.Image.Save(path.Text + "/preview.gif");
+            else preview.Image.Save(path.Text + "/preview.jpg");
+        }
     }
 }
