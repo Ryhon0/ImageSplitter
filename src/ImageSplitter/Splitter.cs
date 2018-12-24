@@ -10,8 +10,9 @@ namespace ImageSplitter
 {
     public class Splitter
     {
-        public static void Split(Image src, int size, string OutputLocation, string prefix, string surfix, bool downscale = true)
+        public static void Split(Image src, int size, string OutputLocation, string prefix, string suffix, bool downscale)
         {
+            Directory.CreateDirectory(OutputLocation);
             Image tile = new Bitmap(size, size);
 
             Size emotesize = new Size(128, 128);
@@ -34,8 +35,9 @@ namespace ImageSplitter
             string emotetext = "";
             for (int i = 0; i < columns * rows; i++)
             {
-                new Bitmap(image.Clone(new Rectangle(column * tile.Width, row * tile.Height, tile.Width, tile.Height), image.PixelFormat), emotesize).Save(OutputLocation + "/" + prefix + i.ToString("D2").Replace("100", "100~1").Replace("1234", "1234~1") + surfix + ".jpg");
-                emotetext += ":" + prefix + i.ToString("D2").Replace("100", "100~1").Replace("1234", "1234~1") + surfix + ":";
+                new Bitmap(image.Clone(new Rectangle(column * tile.Width, row * tile.Height, tile.Width, tile.Height), image.PixelFormat), emotesize).Save(OutputLocation + "/" + prefix + i.ToString("D2").Replace("100", "100~1").Replace("1234", "1234~1") + suffix + ".jpg");
+                emotetext += ":" + prefix + i.ToString("D2").Replace("100", "100~1").Replace("1234", "1234~1") + suffix + ":";
+
                 if (column == columns - 1)
                 {
                     column = 0;

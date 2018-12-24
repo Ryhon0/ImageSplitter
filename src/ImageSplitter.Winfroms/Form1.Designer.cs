@@ -54,9 +54,13 @@
             this.prefix = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.surfix = new System.Windows.Forms.TextBox();
+            this.suffix = new System.Windows.Forms.TextBox();
             this.emotename = new System.Windows.Forms.Label();
             this.downscale = new System.Windows.Forms.CheckBox();
+            this.gif = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.delay = new System.Windows.Forms.TextBox();
+            this.savprev = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.preview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +70,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.file.Location = new System.Drawing.Point(103, 12);
             this.file.Name = "file";
-            this.file.Size = new System.Drawing.Size(603, 20);
+            this.file.Size = new System.Drawing.Size(538, 20);
             this.file.TabIndex = 0;
             this.file.Tag = "";
             this.file.TextChanged += new System.EventHandler(this.file_TextChanged);
@@ -77,13 +81,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.path.Location = new System.Drawing.Point(103, 38);
             this.path.Name = "path";
-            this.path.Size = new System.Drawing.Size(603, 20);
+            this.path.Size = new System.Drawing.Size(538, 20);
             this.path.TabIndex = 1;
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(712, 10);
+            this.button1.Location = new System.Drawing.Point(647, 10);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(59, 23);
             this.button1.TabIndex = 4;
@@ -94,7 +98,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(712, 36);
+            this.button2.Location = new System.Drawing.Point(647, 36);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(59, 23);
             this.button2.TabIndex = 5;
@@ -107,9 +111,9 @@
             this.gen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.gen.Enabled = false;
             this.gen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gen.Location = new System.Drawing.Point(490, 349);
+            this.gen.Location = new System.Drawing.Point(424, 415);
             this.gen.Name = "gen";
-            this.gen.Size = new System.Drawing.Size(281, 99);
+            this.gen.Size = new System.Drawing.Size(282, 99);
             this.gen.TabIndex = 6;
             this.gen.Text = "Generate!";
             this.gen.UseVisualStyleBackColor = true;
@@ -126,7 +130,7 @@
             this.preview.Location = new System.Drawing.Point(12, 64);
             this.preview.Margin = new System.Windows.Forms.Padding(0);
             this.preview.Name = "preview";
-            this.preview.Size = new System.Drawing.Size(470, 413);
+            this.preview.Size = new System.Drawing.Size(407, 450);
             this.preview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.preview.TabIndex = 7;
             this.preview.TabStop = false;
@@ -134,7 +138,7 @@
             // ssize
             // 
             this.ssize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ssize.Location = new System.Drawing.Point(562, 156);
+            this.ssize.Location = new System.Drawing.Point(496, 157);
             this.ssize.Name = "ssize";
             this.ssize.Size = new System.Drawing.Size(100, 20);
             this.ssize.TabIndex = 8;
@@ -153,7 +157,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(492, 159);
+            this.label2.Location = new System.Drawing.Point(426, 160);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 13;
@@ -173,7 +177,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(485, 127);
+            this.label4.Location = new System.Drawing.Point(419, 128);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(161, 26);
             this.label4.TabIndex = 15;
@@ -183,7 +187,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(522, 211);
+            this.label6.Location = new System.Drawing.Point(456, 212);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 13);
             this.label6.TabIndex = 20;
@@ -193,7 +197,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(507, 185);
+            this.label7.Location = new System.Drawing.Point(441, 186);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 13);
             this.label7.TabIndex = 19;
@@ -203,7 +207,7 @@
             // 
             this.rows.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rows.Enabled = false;
-            this.rows.Location = new System.Drawing.Point(562, 208);
+            this.rows.Location = new System.Drawing.Point(496, 209);
             this.rows.Name = "rows";
             this.rows.ReadOnly = true;
             this.rows.Size = new System.Drawing.Size(100, 20);
@@ -213,7 +217,7 @@
             // 
             this.columns.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.columns.Enabled = false;
-            this.columns.Location = new System.Drawing.Point(562, 182);
+            this.columns.Location = new System.Drawing.Point(496, 183);
             this.columns.Name = "columns";
             this.columns.ReadOnly = true;
             this.columns.Size = new System.Drawing.Size(100, 20);
@@ -228,7 +232,7 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(482, 64);
+            this.label8.Location = new System.Drawing.Point(424, 64);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(115, 26);
             this.label8.TabIndex = 21;
@@ -238,7 +242,7 @@
             // 
             this.dimensions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dimensions.AutoSize = true;
-            this.dimensions.Location = new System.Drawing.Point(484, 90);
+            this.dimensions.Location = new System.Drawing.Point(426, 90);
             this.dimensions.Name = "dimensions";
             this.dimensions.Size = new System.Drawing.Size(64, 13);
             this.dimensions.TabIndex = 22;
@@ -248,7 +252,7 @@
             // 
             this.animated.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.animated.AutoSize = true;
-            this.animated.Location = new System.Drawing.Point(484, 103);
+            this.animated.Location = new System.Drawing.Point(426, 103);
             this.animated.Name = "animated";
             this.animated.Size = new System.Drawing.Size(65, 13);
             this.animated.TabIndex = 23;
@@ -258,7 +262,7 @@
             // 
             this.total.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.total.AutoSize = true;
-            this.total.Location = new System.Drawing.Point(560, 231);
+            this.total.Location = new System.Drawing.Point(494, 232);
             this.total.Name = "total";
             this.total.Size = new System.Drawing.Size(37, 13);
             this.total.TabIndex = 25;
@@ -268,9 +272,9 @@
             // 
             this.genprev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.genprev.Enabled = false;
-            this.genprev.Location = new System.Drawing.Point(490, 320);
+            this.genprev.Location = new System.Drawing.Point(424, 386);
             this.genprev.Name = "genprev";
-            this.genprev.Size = new System.Drawing.Size(281, 23);
+            this.genprev.Size = new System.Drawing.Size(280, 23);
             this.genprev.TabIndex = 26;
             this.genprev.Text = "Generate Preview";
             this.genprev.UseVisualStyleBackColor = true;
@@ -279,17 +283,17 @@
             // prefix
             // 
             this.prefix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.prefix.Location = new System.Drawing.Point(562, 247);
+            this.prefix.Location = new System.Drawing.Point(461, 318);
             this.prefix.Name = "prefix";
             this.prefix.Size = new System.Drawing.Size(100, 20);
             this.prefix.TabIndex = 27;
-            this.prefix.TextChanged += new System.EventHandler(this.prefix_surfix_TextChanged);
+            this.prefix.TextChanged += new System.EventHandler(this.prefix_suffix_TextChanged);
             // 
             // label9
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(523, 250);
+            this.label9.Location = new System.Drawing.Point(422, 321);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(33, 13);
             this.label9.TabIndex = 28;
@@ -299,26 +303,26 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(523, 276);
+            this.label10.Location = new System.Drawing.Point(422, 347);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 13);
             this.label10.TabIndex = 30;
-            this.label10.Text = "Surfix";
+            this.label10.Text = "Suffix";
             // 
-            // surfix
+            // suffix
             // 
-            this.surfix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.surfix.Location = new System.Drawing.Point(562, 273);
-            this.surfix.Name = "surfix";
-            this.surfix.Size = new System.Drawing.Size(100, 20);
-            this.surfix.TabIndex = 29;
-            this.surfix.TextChanged += new System.EventHandler(this.prefix_surfix_TextChanged);
+            this.suffix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.suffix.Location = new System.Drawing.Point(461, 344);
+            this.suffix.Name = "suffix";
+            this.suffix.Size = new System.Drawing.Size(100, 20);
+            this.suffix.TabIndex = 29;
+            this.suffix.TextChanged += new System.EventHandler(this.prefix_suffix_TextChanged);
             // 
             // emotename
             // 
             this.emotename.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.emotename.AutoSize = true;
-            this.emotename.Location = new System.Drawing.Point(487, 296);
+            this.emotename.Location = new System.Drawing.Point(422, 368);
             this.emotename.Name = "emotename";
             this.emotename.Size = new System.Drawing.Size(128, 13);
             this.emotename.TabIndex = 31;
@@ -326,15 +330,60 @@
             // 
             // downscale
             // 
+            this.downscale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.downscale.AutoSize = true;
             this.downscale.Checked = true;
             this.downscale.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.downscale.Location = new System.Drawing.Point(490, 454);
+            this.downscale.Location = new System.Drawing.Point(425, 521);
             this.downscale.Name = "downscale";
             this.downscale.Size = new System.Drawing.Size(159, 17);
             this.downscale.TabIndex = 32;
             this.downscale.Text = "Downscale images to 128px";
             this.downscale.UseVisualStyleBackColor = true;
+            // 
+            // gif
+            // 
+            this.gif.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gif.AutoSize = true;
+            this.gif.Location = new System.Drawing.Point(428, 262);
+            this.gif.Name = "gif";
+            this.gif.Size = new System.Drawing.Size(147, 17);
+            this.gif.TabIndex = 33;
+            this.gif.Text = "Enable GIF support (slow)";
+            this.gif.UseVisualStyleBackColor = true;
+            this.gif.CheckedChanged += new System.EventHandler(this.gif_CheckedChanged);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(426, 285);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(134, 13);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Delay between frames (ms)";
+            // 
+            // delay
+            // 
+            this.delay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.delay.Enabled = false;
+            this.delay.Location = new System.Drawing.Point(566, 282);
+            this.delay.Name = "delay";
+            this.delay.Size = new System.Drawing.Size(72, 20);
+            this.delay.TabIndex = 35;
+            // 
+            // savprev
+            // 
+            this.savprev.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.savprev.Location = new System.Drawing.Point(12, 517);
+            this.savprev.Name = "savprev";
+            this.savprev.Size = new System.Drawing.Size(407, 23);
+            this.savprev.TabIndex = 41;
+            this.savprev.Text = "Save Preview";
+            this.savprev.UseVisualStyleBackColor = true;
+            this.savprev.Click += new System.EventHandler(this.savprev_Click);
             // 
             // Form1
             // 
@@ -344,11 +393,15 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(781, 483);
+            this.ClientSize = new System.Drawing.Size(716, 547);
+            this.Controls.Add(this.savprev);
+            this.Controls.Add(this.delay);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.gif);
             this.Controls.Add(this.downscale);
             this.Controls.Add(this.emotename);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.surfix);
+            this.Controls.Add(this.suffix);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.prefix);
             this.Controls.Add(this.genprev);
@@ -407,8 +460,12 @@
         private System.Windows.Forms.TextBox prefix;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox surfix;
+        private System.Windows.Forms.TextBox suffix;
         private System.Windows.Forms.Label emotename;
         private System.Windows.Forms.CheckBox downscale;
+        private System.Windows.Forms.CheckBox gif;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox delay;
+        private System.Windows.Forms.Button savprev;
     }
 }

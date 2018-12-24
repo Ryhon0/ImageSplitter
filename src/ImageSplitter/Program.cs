@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace ImageSplitter
 {
@@ -32,7 +33,7 @@ namespace ImageSplitter
             string prefix = Console.ReadLine();
 
             Console.WriteLine("Enter the emote surfix");
-            string surfix = Console.ReadLine();
+            string suffix = Console.ReadLine();
 
             Console.WriteLine("Enter the output folder path");
             string output = Console.ReadLine();
