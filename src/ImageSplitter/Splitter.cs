@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -46,6 +47,38 @@ namespace ImageSplitter
             File.WriteAllLines(OutputLocation + "/emotes.txt", emotetext.Split(new[] { Environment.NewLine }, StringSplitOptions.None));
         }
 
+        public static void SplitGif(Image src, int size, string Output, string prefix, string suffix, bool downscale, int delay)
+        {
+            Image[] frames = getFrames(src);
+            int rows = (int)Math.Ceiling((decimal)src.Width / size);
+            int columns = (int)Math.Ceiling((decimal)src.Height / size);
+
+            for (int i = 0; i < frames.Length; i++) //generate emotes for each frame
+            {
+                Split(frames[i], size, Path.GetTempPath() + "ImageSplitter/gif" + i, prefix, suffix, downscale);
+            }
+
+            for (int i = 0; i < columns * rows; i++) // for every emote set make a gif
+            {
+                string emote = Output + "/" + prefix + i.ToString("D2") + suffix + ".gif";
+                string images = "";
+
+                for (int ii = 0; ii < frames.Length; ii++) // get all the emote paths
+                {
+                    Image.FromFile(Path.GetTempPath() + "ImageSplitter/gif" + ii + "/" + prefix + i.ToString("D2") + suffix + ".jpg").Save(Path.GetTempPath() + "ImageSplitter/gif" + ii + "/" + prefix + i.ToString("D2") + suffix + ".gif", ImageFormat.Gif);
+
+                    images += " " + Path.GetTempPath() + "ImageSplitter/gif" + ii + "/" + prefix + i.ToString("D2") + suffix + ".gif";
+                }
+
+                Process p = new Process();
+                p.StartInfo.FileName = "gifsicle.exe";
+                p.StartInfo.Arguments = $"--delay={delay/10} -O1 --colors=64 --loopcount=forever {images} -o {emote}";
+                p.StartInfo.UseShellExecute = false;
+                p.Start();
+            }
+            File.Copy(Path.GetTempPath() + "ImageSplitter/gif" + 0 + "/emotes.txt", Output + "/emotes.txt");
+        }
+
         public static Image GeneratePreview(Image src, int size, int columns, int rows)
         {
             Image img = new Bitmap(size * columns, size * rows);
@@ -76,6 +109,47 @@ namespace ImageSplitter
                 rowStartWithRed = !rowStartWithRed;
             }
             return img;
+        }
+
+        public static Image GenerateGifPreview(Image src, int size, int columns, int rows, int delay)
+        {
+            Image[] frames = getFrames(src);
+
+            string images = "";
+
+            for (int i = 0; i < frames.Length; i++) //generate preview for each frame
+            {
+                Directory.CreateDirectory(Path.GetTempPath() + "ImageSplitter/gifpreview/");
+                GeneratePreview(frames[i], size, columns, rows).Save(Path.GetTempPath() + "ImageSplitter/gifpreview/" + i.ToString("D2") + ".gif", ImageFormat.Gif);
+                images += " " + Path.GetTempPath() + "ImageSplitter/gifpreview/" + i.ToString("D2") + ".gif";
+            }
+
+            var randomNumber = DateTime.Now.Ticks;
+
+            Process p = new Process();
+            p.StartInfo.FileName = "gifsicle.exe";
+            p.StartInfo.Arguments = $"--delay={delay / 10} -O1 --colors=16 --loopcount=forever {images} -o {Path.GetTempPath() + "ImageSplitter/gifpreview" + randomNumber + ".gif"}";
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardError = true;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.Start();
+            Console.WriteLine(p.StandardError.ReadToEnd());
+
+            return Image.FromFile(Path.GetTempPath() + "ImageSplitter/gifpreview" + randomNumber + ".gif");
+        }
+
+        private static Image[] getFrames(Image originalImg)
+        {
+            int numberOfFrames = originalImg.GetFrameCount(FrameDimension.Time);
+            Image[] frames = new Image[numberOfFrames];
+
+            for (int i = 0; i < numberOfFrames; i++)
+            {
+                originalImg.SelectActiveFrame(FrameDimension.Time, i);
+                frames[i] = ((Image)originalImg.Clone());
+            }
+
+            return frames;
         }
     }
 }

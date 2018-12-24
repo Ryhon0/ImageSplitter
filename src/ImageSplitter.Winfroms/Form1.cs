@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace SplitterGUI
             gen.Enabled = false;
             genprev.Enabled = false;
             ssize.Enabled = false;
+            delay.Enabled = false;
         }
 
         Image src;
@@ -46,8 +48,7 @@ namespace SplitterGUI
                 src = Image.FromFile(file.Text);
                 preview.Image = src;
                 dimensions.Text = "Dimensions: " + src.Width + "x" + src.Height;
-                if (src.GetFrameCount(new FrameDimension(src.FrameDimensionsList[0])) > 1) animated.Text = "Is Animated: True - Only the first frame will be saved";
-                else animated.Text = "Is Animated: False";
+                animated.Text = "Is Animated: " + (src.GetFrameCount(new FrameDimension(src.FrameDimensionsList[0])) > 1).ToString();
                 ssize.Enabled = true;
                 string size = ssize.Text;
                 ssize.Text = "";
@@ -68,7 +69,9 @@ namespace SplitterGUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ImageSplitter.Splitter.Split(src, int.Parse(ssize.Text), path.Text, prefix.Text, surfix.Text);
+            if(!gif.Checked) ImageSplitter.Splitter.Split(src, int.Parse(ssize.Text), path.Text, prefix.Text, suffix.Text, downscale.Checked);
+            else ImageSplitter.Splitter.SplitGif(src, int.Parse(ssize.Text), path.Text, prefix.Text, suffix.Text, downscale.Checked, int.Parse(delay.Text));
+
         }
 
         private void ssize_TextChanged(object sender, EventArgs e)
@@ -93,12 +96,19 @@ namespace SplitterGUI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            preview.Image = ImageSplitter.Splitter.GeneratePreview(src, int.Parse(ssize.Text), int.Parse(columns.Text), int.Parse(rows.Text));
+            if(!gif.Checked) preview.Image = ImageSplitter.Splitter.GeneratePreview(src, int.Parse(ssize.Text), int.Parse(columns.Text), int.Parse(rows.Text));
+            else preview.Image = ImageSplitter.Splitter.GenerateGifPreview(src, int.Parse(ssize.Text), int.Parse(columns.Text), int.Parse(rows.Text), int.Parse(delay.Text));
         }
 
-        private void prefix_surfix_TextChanged(object sender, EventArgs e)
+        private void prefix_suffix_TextChanged(object sender, EventArgs e)
         {
-            emotename.Text = "Example emote name: " + prefix.Text + "XX" + surfix.Text;
+            emotename.Text = "Example emote name: " + prefix.Text + "XX" + suffix.Text;
         }
+
+        private void gif_CheckedChanged(object sender, EventArgs e)
+        {
+            delay.Enabled = gif.Checked;
+        }
+
     }
 }

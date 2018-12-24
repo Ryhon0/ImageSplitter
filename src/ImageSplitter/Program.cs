@@ -37,8 +37,31 @@ namespace ImageSplitter
             Console.WriteLine("Enter the output folder path");
             string output = Console.ReadLine();
 
-            Console.WriteLine("Generating emojis, please wait...");
-            Splitter.Split(Image.FromFile(file), (int)size, output, prefix, surfix);
+            Image img = Image.FromFile(file);
+
+            if ((img.GetFrameCount(new FrameDimension(img.FrameDimensionsList[0])) > 1))
+            {
+                int? delay = null;
+                while (delay == null)
+                {
+                    try
+                    {
+                        Console.WriteLine("Enter the delay between frames");
+                        delay = int.Parse(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Failed to parse the delay");
+                    }
+                }
+                Console.WriteLine("Generating emojis, please wait...");
+                Splitter.SplitGif(img, (int)size, output, prefix, suffix, true, (int)delay);
+            }
+            else
+            {
+                Console.WriteLine("Generating emojis, please wait...");
+                Splitter.Split(img, (int)size, output, prefix, suffix, true);
+            }
 
             Console.WriteLine("Done! Press any key to close");
             Console.ReadKey();
